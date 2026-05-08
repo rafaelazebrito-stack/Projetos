@@ -1,109 +1,82 @@
 import streamlit as st
 import json
-from componentes.camera import capturar_face
+import os
 
 def exibir_gestao(auth_data, login_file):
-    st.markdown('<h2 class="glow-text">🛡️ Gestão de Operadores Argos</h2>', unsafe_allow_html=True)
+    """
+    Interface de Gerenciamento de Operadores Argos.
+    Removida temporariamente a captura biométrica para simplificação do protocolo.
+    """
+    st.markdown('<h2 class="glow-text">👤 Gestão de Operadores e Credenciais</h2>', unsafe_allow_html=True)
     
-    NIVEIS = ["Administrador", "Diretoria", "Lojista", "Segurança", "Atendente"]
-    AREAS = ["📝 Cadastro Geral", "📊 BI & Analytics", "🎥 Monitoramento Vídeo", "👤 Gestão de Usuários", "📋 Auditoria & Logs", "💎 Marketplace"]
-
-    tab_listar, tab_novo = st.tabs(["👥 Operadores Habilitados", "➕ Novo Acesso"])
-
-    # --- ABA 1: LISTAR, EDITAR, BIOMETRIA, BLOQUEIO E EXCLUSÃO ---
-    with tab_listar:
-        if not auth_data:
-            st.info("Nenhum operador no sistema.")
+    # --- ABA 1: LISTAGEM DE OPERADORES ATIVOS ---
+    tab_lista, tab_novo, tab_config = st.tabs(["📋 Operadores Ativos", "➕ Novo Cadastro", "⚙️ Configurações"])
+    
+    with tab_lista:
+        st.write("### Auditoria de Acessos")
+        if auth_data:
+            for username, info in auth_data.items():
+                with st.expander(f"🔐 {info['nome']} ({info['id']})"):
+                    col_info, col_status = st.columns(2)
+                    with col_info:
+                        st.write(f"**Nível:** {info.get('nivel', 'Atendente')}")
+                        st.write(f"**Áreas:** {', '.join(info.get('areas', []))}")
+                    with col_status:
+                        status = info.get('status', 'Ativo')
+                        st.select_slider(
+                            f"Status do Operador: {username}",
+                            options=["Ativo", "Bloqueado"],
+                            value=status,
+                            key=f"status_{username}"
+                        )
         else:
-            # Seleção de usuário por Selectbox para garantir que apenas UM formulário 
-            # de câmera seja renderizado por vez. Isso mata o erro removeChild.
-            uids = list(auth_data.keys())
-            selecionado = st.selectbox("Selecione o Operador para Gerenciar:", uids, 
-                                     format_func=lambda x: f"{auth_data[x]['nome']} ({x})")
-            
-            if selecionado:
-                info = auth_data[selecionado]
-                st.markdown(f"### 👤 Gerenciando: {info['nome']}")
-                
-                # --- SUB-SEÇÃO: BIOMETRIA (A funcionalidade que você pediu) ---
-                with st.expander("📸 Atualizar Biometria Facial", expanded=False):
-                    st.write("Capture uma nova face para substituir a atual.")
-                    # Key estática garante que o nó do DOM seja fixo
-                    nova_face = capturar_face(key_camera="CAM_GESTAO_FIXA", label_botao="Cadastrar Biometria Facial")
-                    if st.button("Vincular Nova Face ao Perfil", use_container_width=True):
-                        if nova_face:
-                            auth_data[selecionado]["foto_biometria"] = nova_face
-                            with open(login_file, 'w', encoding='utf-8') as f:
-                                json.dump(auth_data, f, indent=4, ensure_ascii=False)
-                            st.success("Biometria atualizada!")
-                            st.rerun()
+            st.info("Nenhum operador registrado no sistema.")
 
-                # --- SUB-SEÇÃO: DADOS CADASTRAIS ---
-                with st.form(key=f"form_edicao_{selecionado}"):
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        e_nome = st.text_input("Nome Completo", value=info.get('nome'))
-                        e_email = st.text_input("E-mail", value=info.get('email', ''))
-                    with col2:
-                        e_senha = st.text_input("Senha", value=info.get('chave'), type="password")
-                        e_nivel = st.selectbox("Nível", NIVEIS, index=NIVEIS.index(info.get('nivel', 'Atendente')) if info.get('nivel') in NIVEIS else 4)
-                    
-                    e_areas = st.multiselect("Permissões", AREAS, default=info.get('areas', []))
-                    
-                    if st.form_submit_button("💾 SALVAR ALTERAÇÕES CADASTRAIS"):
-                        auth_data[selecionado].update({
-                            "nome": e_nome, "email": e_email, "chave": e_senha, "nivel": e_nivel, "areas": e_areas
-                        })
-                        with open(login_file, 'w', encoding='utf-8') as f:
-                            json.dump(auth_data, f, indent=4, ensure_ascii=False)
-                        st.success("Dados salvos!")
-                        st.rerun()
-
-                # --- SUB-SEÇÃO: STATUS E EXCLUSÃO ---
-                st.markdown("---")
-                c_status, c_del = st.columns(2)
-                with c_status:
-                    status_atual = info.get('status', 'Ativo')
-                    label_status = "🚫 BLOQUEAR ACESSO" if status_atual == "Ativo" else "✅ REATIVAR ACESSO"
-                    if st.button(label_status, use_container_width=True):
-                        auth_data[selecionado]['status'] = "Bloqueado" if status_atual == "Ativo" else "Ativo"
-                        with open(login_file, 'w', encoding='utf-8') as f:
-                            json.dump(auth_data, f, indent=4)
-                        st.rerun()
-                
-                with c_del:
-                    if st.button("🗑️ EXCLUIR DEFINITIVAMENTE", use_container_width=True, type="secondary"):
-                        del auth_data[selecionado]
-                        with open(login_file, 'w', encoding='utf-8') as f:
-                            json.dump(auth_data, f, indent=4)
-                        st.success("Operador removido.")
-                        st.rerun()
-
-    # --- ABA 2: NOVO CADASTRO (FUNCIONALIDADE COMPLETA) ---
     with tab_novo:
-        st.write("### 📸 Biometria Facial Obrigatória")
-        face_novo = capturar_face(key_camera="CAM_NOVO_FIXA", label_botao="Cadastrar Biometria Facial")
-        
-        with st.form(key="form_novo_completo"):
-            c1, c2 = st.columns(2)
-            with c1:
-                n_id = st.text_input("Login (ID) *")
-                n_nome = st.text_input("Nome Completo *")
-                n_email = st.text_input("E-mail")
-            with c2:
-                n_pass = st.text_input("Senha *", type="password")
-                n_nivel = st.selectbox("Nível de Autoridade", NIVEIS)
-                n_areas = st.multiselect("Áreas de Acesso", AREAS, default=["📝 Cadastro Geral"])
+        st.write("### Protocolo de Novo Operador")
+        with st.form("form_novo_user", clear_on_submit=True):
+            n_nome = st.text_input("NOME COMPLETO")
+            n_id = st.text_input("ID DE LOGIN (Ex: argos_01)")
+            n_pass = st.text_input("CHAVE DE ACESSO", type="password")
             
-            if st.form_submit_button("🚀 HABILITAR OPERADOR"):
-                if n_id and n_nome and n_pass:
+            n_nivel = st.selectbox("NÍVEL DE AUTORIDADE", ["Administrador", "Segurança", "Atendente"])
+            
+            st.write("---")
+            st.write("**Permissões de Módulo:**")
+            check_cad = st.checkbox("📝 Cadastro Geral", value=True)
+            check_bi = st.checkbox("📊 BI Analytics")
+            check_aud = st.checkbox("📋 Auditoria")
+            
+            btn_criar = st.form_submit_button("🚀 REGISTRAR OPERADOR")
+            
+            if btn_criar:
+                if n_nome and n_id and n_pass:
+                    # Construindo as permissões
+                    areas = []
+                    if check_cad: areas.append("📝 Cadastro Geral")
+                    if check_bi: areas.append("📊 BI Analytics")
+                    if check_aud: areas.append("📋 Auditoria")
+                    
+                    # Novo registro sem o campo de biometria facial
                     auth_data[n_id] = {
-                        "nome": n_nome, "id": n_id, "chave": n_pass, "email": n_email,
-                        "nivel": n_nivel, "areas": n_areas, "status": "Ativo", "foto_biometria": face_novo
+                        "nome": n_nome,
+                        "id": n_id,
+                        "chave": n_pass,
+                        "nivel": n_nivel,
+                        "status": "Ativo",
+                        "areas": areas
                     }
-                    with open(login_file, 'w', encoding='utf-8') as f:
-                        json.dump(auth_data, f, indent=4, ensure_ascii=False)
-                    st.success(f"Operador {n_nome} habilitado com sucesso!")
-                    st.rerun()
+                    
+                    # Persistência no JSON
+                    try:
+                        with open(login_file, "w", encoding="utf-8") as f:
+                            json.dump(auth_data, f, indent=4, ensure_ascii=False)
+                        st.success(f"✅ Operador {n_nome} integrado com sucesso!")
+                    except Exception as e:
+                        st.error(f"Erro ao salvar credenciais: {e}")
                 else:
-                    st.error("Preencha todos os campos com asterisco (*).")
+                    st.warning("Preencha todos os campos obrigatórios.")
+
+    with tab_config:
+        st.write("### Parâmetros do Sistema")
+        st.info("Configurações globais de segurança e tempo de sessão.")
