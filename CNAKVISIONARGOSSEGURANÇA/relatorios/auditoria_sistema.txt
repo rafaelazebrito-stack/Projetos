@@ -1,0 +1,93 @@
+[08/05/2026 10:35:20] - LOGIN: Rafael Brito acessou via senha.
+[08/05/2026 10:35:20] - ACESSO: Rafael Brito entrou em Cadastro Geral.
+[08/05/2026 10:35:50] - ACESSO: Rafael Brito consultou o BI.
+[08/05/2026 10:36:15] - Operador exportou o relatório de auditoria.
+[08/05/2026 10:36:28] - ACESSO: Rafael Brito entrou em Gestão de Usuários.
+[08/05/2026 10:41:03] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 10:41:24] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 10:41:24] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 10:41:34] - ACESSO: Rafael Brito entrou no Marketplace.
+[08/05/2026 10:41:36] - ACESSO: Rafael Brito entrou no Marketplace.
+[08/05/2026 10:41:41] - ACESSO: Rafael Brito consultou o BI.
+[08/05/2026 10:42:06] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:42:09] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 10:42:20] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:43:24] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:43:48] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 10:47:45] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 10:47:45] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 10:47:51] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:51:02] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:51:02] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:51:14] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:51:15] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:53:22] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 10:53:22] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 10:53:26] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:54:11] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 10:54:19] - LOGIN: user01 acessou o sistema.
+[08/05/2026 10:54:19] - ACESSO: user01 abriu Cadastro Geral.
+[08/05/2026 10:54:26] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:54:44] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:54:48] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:54:48] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:54:56] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:54:58] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:54:58] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 10:55:05] - LOGOUT: user01 saiu.
+[08/05/2026 10:55:28] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 10:55:28] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 10:55:34] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:55:44] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:55:47] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:55:47] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:56:02] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 10:56:02] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:04:14] - ACESSO: Rafael Brito abriu Monitoramento.
+[08/05/2026 11:04:28] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:04:28] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 11:04:32] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:12:37] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:12:37] - ACESSO: Rafael Brito abriu Cadastro Geral.
+[08/05/2026 11:12:40] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:13:02] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:13:03] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:14:10] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:14:10] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:14:45] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:14:45] - ACESSO: Rafael Brito abriu Gestão de Usuários.
+[08/05/2026 11:14:54] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 11:15:02] - LOGIN: user01 acessou o sistema.
+[08/05/2026 11:15:02] - ACESSO: user01 abriu Cadastro Geral.
+[08/05/2026 11:15:13] - ACESSO: user01 abriu Gestão de Usuários.
+[08/05/2026 11:26:45] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:26:46] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:26:52] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:27:08] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 11:27:17] - LOGIN: user01 acessou o sistema.
+[08/05/2026 11:27:17] - ACESSO: user01 entrou no Cadastro.
+[08/05/2026 11:27:39] - LOGOUT: user01 saiu.
+[08/05/2026 11:27:51] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:27:52] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:28:05] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:31:20] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 11:31:38] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:31:38] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:31:41] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:39:31] - LOGOUT: Rafael Brito saiu.
+[08/05/2026 11:39:45] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:39:46] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:39:55] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:47:56] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:47:57] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:48:00] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:52:16] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:52:17] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:52:29] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:55:27] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 11:55:27] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 11:55:31] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:55:58] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:57:36] - ACESSO: Rafael Brito monitorou as câmeras.
+[08/05/2026 11:57:53] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 11:58:16] - ACESSO: Rafael Brito entrou na Gestão de Acessos.

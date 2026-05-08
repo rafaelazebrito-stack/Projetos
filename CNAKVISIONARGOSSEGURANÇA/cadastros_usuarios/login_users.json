@@ -1,0 +1,29 @@
+{
+    "admin_rafael": {
+        "id": "rafael61739386",
+        "chave": "123456789",
+        "nome": "Rafael Brito",
+        "nivel": "Administrador",
+        "email": "rafael61739386@cnakvision.com",
+        "areas": [
+            "📝 Cadastro Geral",
+            "📊 BI & Analytics",
+            "🎥 Monitoramento Vídeo",
+            "👤 Gestão de Usuários",
+            "📋 Auditoria & Logs",
+            "💎 Marketplace"
+        ]
+    },
+    "user01": {
+        "nome": "user01",
+        "id": "user01",
+        "chave": "123456789",
+        "nivel": "Atendente",
+        "status": "Ativo",
+        "foto_biometria": null,
+        "areas": [
+            "📝 Cadastro Geral"
+        ],
+        "email": "user01@cnakvision.com"
+    }
+}
