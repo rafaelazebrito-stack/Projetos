@@ -91,3 +91,33 @@
 [08/05/2026 11:57:36] - ACESSO: Rafael Brito monitorou as câmeras.
 [08/05/2026 11:57:53] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
 [08/05/2026 11:58:16] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:03:59] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 12:03:59] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 12:04:02] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:04:14] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:06:40] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 12:06:41] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 12:06:43] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:07:01] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:07:27] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:10:53] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 12:10:54] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 12:10:57] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:11:32] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:12:47] - ACESSO: Rafael Brito monitorou as câmeras.
+[08/05/2026 12:12:50] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:12:54] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:13:04] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:15:59] - ACESSO: Rafael Brito monitorou as câmeras.
+[08/05/2026 12:16:02] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:17:55] - ACESSO: Rafael Brito monitorou as câmeras.
+[08/05/2026 12:18:00] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:18:36] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:20:21] - ACESSO: Rafael Brito monitorou as câmeras.
+[08/05/2026 12:20:24] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:20:41] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:20:45] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:20:52] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:21:04] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:21:39] - ACESSO: Rafael Brito monitorou as câmeras.
+[08/05/2026 12:21:42] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
