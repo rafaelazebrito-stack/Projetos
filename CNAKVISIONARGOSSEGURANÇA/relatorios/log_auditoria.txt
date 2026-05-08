@@ -1,0 +1,25 @@
+08/05/2026 12:35:11 - LOGIN: Rafael Brito acessou o sistema.
+08/05/2026 12:35:11 - ACESSO: Rafael Brito entrou no Cadastro.
+08/05/2026 12:35:40 - ACESSO: Rafael Brito visualizou o Marketplace.
+08/05/2026 12:35:44 - ACESSO: Rafael Brito entrou no Cadastro.
+08/05/2026 12:36:10 - ACESSO: Rafael Brito monitorou as câmeras.
+08/05/2026 12:36:13 - ACESSO: Rafael Brito entrou no Cadastro.
+08/05/2026 12:36:29 - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+08/05/2026 12:37:03 - LOGIN: Rafael Brito acessou o sistema.
+08/05/2026 12:37:04 - ACESSO: Rafael Brito entrou no Cadastro.
+08/05/2026 12:39:13 - LOGIN: Rafael Brito acessou o sistema.
+08/05/2026 12:39:13 - ACESSO: Rafael Brito entrou no Cadastro.
+08/05/2026 12:39:16 - ACESSO: Rafael Brito visualizou Analytics.
+08/05/2026 12:39:18 - ACESSO: Rafael Brito monitorou as câmeras.
+08/05/2026 12:39:19 - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+08/05/2026 12:39:26 - ACESSO: Rafael Brito visualizou o Marketplace.
+08/05/2026 12:39:29 - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+08/05/2026 12:39:45 - ACESSO: Rafael Brito entrou no Cadastro.
+08/05/2026 12:43:16 - LOGOUT: Rafael Brito saiu.
+08/05/2026 12:52:06 - LOGIN: Rafael Brito acessou via senha.
+08/05/2026 13:10:59 - AUTHORIZED: Rafael Brito entered system.
+08/05/2026 13:11:00 - ACESSO: Rafael Brito entrou no Cadastro Geral.
+08/05/2026 13:16:39 - AUTHORIZED: Rafael Brito iniciou sessão.
+08/05/2026 13:22:38 - LOGIN: Rafael Brito autenticado.
+08/05/2026 13:25:24 - COMANDO: Reinício forçado do servidor de vídeo solicitado.
+08/05/2026 13:34:31 - LOGIN: Rafael Brito autenticado.

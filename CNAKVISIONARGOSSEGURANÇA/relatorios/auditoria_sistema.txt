@@ -121,3 +121,6 @@
 [08/05/2026 12:21:04] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
 [08/05/2026 12:21:39] - ACESSO: Rafael Brito monitorou as câmeras.
 [08/05/2026 12:21:42] - ACESSO: Rafael Brito entrou na Gestão de Acessos.
+[08/05/2026 12:23:41] - LOGIN: Rafael Brito acessou o sistema.
+[08/05/2026 12:23:41] - ACESSO: Rafael Brito entrou no Cadastro.
+[08/05/2026 12:23:46] - ACESSO: Rafael Brito entrou na Gestão de Acessos.

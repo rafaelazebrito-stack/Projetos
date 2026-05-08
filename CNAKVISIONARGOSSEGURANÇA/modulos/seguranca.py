@@ -1,54 +1,105 @@
 import streamlit as st
 import os
+import pandas as pd
 from datetime import datetime
 
-def registrar_log(mensagem, relatorios_dir):
-    """
-    Função Motor de Auditoria: Grava ações em um arquivo .txt
-    """
-    data_hora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    log_entry = f"[{data_hora}] - {mensagem}\n"
+# ==============================================================================
+# 1. FUNÇÃO DE LOG (ESSENCIAL PARA TODOS OS MÓDULOS)
+# ==============================================================================
+def registrar_log(mensagem, diretorio_logs):
+    """Garante a rastreabilidade industrial de todas as ações no sistema."""
+    arquivo_log = os.path.join(diretorio_logs, "log_auditoria.txt")
+    timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     
-    caminho_log = os.path.join(relatorios_dir, "auditoria_sistema.txt")
+    # Cria o diretório se não existir para evitar erros de escrita
+    os.makedirs(diretorio_logs, exist_ok=True)
     
-    with open(caminho_log, "a", encoding="utf-8") as f:
-        f.write(log_entry)
+    with open(arquivo_log, "a", encoding="utf-8") as f:
+        f.write(f"{timestamp} - {mensagem}\n")
 
-def exibir_monitoramento(db_handler, relatorios_dir):
-    # (Mantém o código dos vídeos de estacionamento e shopping que já fizemos)
-    st.markdown('<h2 class="glow-text">🎥 Central de Monitoramento Argos</h2>', unsafe_allow_html=True)
-    col1, col2 = st.columns(2)
-    with col1:
-        st.video('https://assets.mixkit.co/videos/download/mixkit-car-parking-lot-night-action-1305.mp4')
-    with col2:
-        st.video('https://assets.mixkit.co/videos/download/mixkit-people-walking-in-shopping-mall-1110.mp4')
+# ==============================================================================
+# 2. FUNÇÃO: MONITORAMENTO DE VÍDEO (RESTAURADA E MELHORADA)
+# ==============================================================================
+def exibir_monitoramento(db_handler, diretorio_logs):
+    """Interface Tática de Vigilância e Monitoramento."""
+    st.markdown('<h2 class="glow-text">🎥 Monitoramento Vídeo // CNAK VISION</h2>', unsafe_allow_html=True)
+    
+    # Layout de Grade Industrial
+    c1, c2 = st.columns([2, 1])
+    
+    with c1:
+        st.markdown('<div style="border:1px solid #FFD700; padding:10px; background:#000;">', unsafe_allow_html=True)
+        st.write("📡 **FEED DE VÍDEO PRINCIPAL - TERMINAL ATIVO**")
+        # Simulação de placeholder de vídeo/camera
+        st.image("https://img.freepik.com/premium-photo/cctv-camera-security-system-operating-with-digital-interface-screen_31965-15105.jpg", 
+                 caption="STREAMING_ID: 085-CNAK-PROT", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-def exibir_auditoria(relatorios_dir):
-    """
-    Módulo: Auditoria & Logs (Item 1 solicitado)
-    """
+    with c2:
+        st.markdown("### 📊 Status de Rede")
+        st.metric("Sinal LPR", "98%", delta="Excelente")
+        st.metric("Frames/sec", "60 FPS", delta="Estável")
+        st.metric("Latência", "12ms", delta="-2ms", delta_color="normal")
+        
+        if st.button("REINICIAR SERVIDOR DE VÍDEO", use_container_width=True):
+            registrar_log("COMANDO: Reinício forçado do servidor de vídeo solicitado.", diretorio_logs)
+            st.warning("Reiniciando protocolos de captura...")
+
+# ==============================================================================
+# 3. FUNÇÃO: AUDITORIA & LOGS (DESIGN INDUSTRIAL)
+# ==============================================================================
+def exibir_auditoria(diretorio_logs):
+    """Painel de Compliance e Rastreabilidade Analítica."""
     st.markdown('<h2 class="glow-text">📋 Auditoria & Logs</h2>', unsafe_allow_html=True)
     
-    caminho_log = os.path.join(relatorios_dir, "auditoria_sistema.txt")
-    
-    if os.path.exists(caminho_log):
-        with open(caminho_log, "r", encoding="utf-8") as f:
-            conteudo = f.readlines()
-        
-        # Exibe os últimos 20 logs de forma elegante
-        st.markdown("### Histórico Recente de Ações")
-        for log in reversed(conteudo[-20:]):
-            st.code(log.strip(), language="bash")
-            
-        # Botão para baixar o relatório completo
-        st.markdown("---")
-        if st.button("GERAR RELATÓRIO PDF/TXT"):
-            st.download_button(
-                label="📥 Baixar Log Completo",
-                data="".join(conteudo),
-                file_name=f"auditoria_argos_{datetime.now().strftime('%Y%m%d')}.txt",
-                mime="text/plain"
-            )
-            registrar_log(f"Operador exportou o relatório de auditoria.", relatorios_dir)
-    else:
-        st.info("Nenhum registro de auditoria encontrado ainda.")
+    arquivo_log = os.path.join(diretorio_logs, "log_auditoria.txt")
+
+    if not os.path.exists(arquivo_log):
+        st.info("Aguardando inicialização de registros...")
+        return
+
+    try:
+        with open(arquivo_log, "r", encoding="utf-8") as f:
+            linhas = f.readlines()
+
+        dados_log = []
+        for linha in reversed(linhas):
+            if " - " in linha:
+                dt_hr, msg = linha.split(" - ", 1)
+                
+                # Inteligência de Categorização
+                if "LOGIN" in msg: nivel, tag = "INFO", "🔵"
+                elif "ERRO" in msg or "NEGADO" in msg: nivel, tag = "CRÍTICO", "🔴"
+                elif "CADASTRO" in msg: nivel, tag = "OPERACIONAL", "🟡"
+                else: nivel, tag = "SISTEMA", "⚪"
+
+                dados_log.append({
+                    "🕒 Timestamp": dt_hr,
+                    "🛡️ Nível": f"{tag} {nivel}",
+                    "📝 Evento": msg.strip()
+                })
+
+        df = pd.DataFrame(dados_log)
+
+        # Dashboard de Auditoria
+        st.dataframe(
+            df,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "🕒 Timestamp": st.column_config.TextColumn(width="medium"),
+                "🛡️ Nível": st.column_config.TextColumn(width="small"),
+                "📝 Evento": st.column_config.TextColumn(width="large")
+            }
+        )
+
+        st.download_button(
+            "📊 EXPORTAR LOGS PARA COMPLIANCE",
+            df.to_csv(index=False).encode('utf-8'),
+            f"auditoria_cnak_{datetime.now().strftime('%Y%m%d')}.csv",
+            "text/csv",
+            use_container_width=True
+        )
+
+    except Exception as e:
+        st.error(f"Erro ao processar registros de segurança: {e}")

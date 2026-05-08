@@ -1,68 +1,49 @@
 import streamlit as st
-from datetime import datetime
-# Importamos as funções diretamente do seu módulo de câmera
-from componentes.camera import capturar_face, salvar_foto
-from utilitarios.formatadores import Utils
+import os
+from componentes.camera import capturar_face
+# Importação explícita para evitar o erro de 'nome não encontrado'
+from componentes.design import salvar_foto, aplicar_design_argos
 
 def exibir_cadastro(db_handler, foto_dir):
-    st.markdown('<h2 class="glow-text">📝 Registro Central de Visitantes</h2>', unsafe_allow_html=True)
+    # Aplica o estilo visual da Argos
+    aplicar_design_argos()
+    st.markdown('<h2 class="glow-text">📝 Cadastro Geral de Acessos</h2>', unsafe_allow_html=True)
     
-    # Iniciando o formulário
-    with st.form("form_registro_geral", clear_on_submit=True):
-        col1, col2 = st.columns(2)
+    # Formulário Unificado
+    with st.form(key="form_cadastro_final", clear_on_submit=True):
+        c1, c2 = st.columns(2)
         
-        with col1:
-            nome = st.text_input("Nome Completo *")
-            doc = st.text_input("CPF *", placeholder="000.000.000-00")
-            email = st.text_input("E-mail *")
-        
-        with col2:
-            tipo = st.selectbox("Tipo de Acesso", ["Diretoria", "Operacional", "Lojista", "Visitante"])
-            sexo = st.selectbox("Sexo", ["Masculino", "Feminino", "Não Informado"])
-            endereco = st.text_input("Endereço Completo")
+        with c1:
+            st.subheader("📋 Informações")
+            nome = st.text_input("NOME COMPLETO *")
+            documento = st.text_input("DOCUMENTO (CPF/RG) *")
+            email = st.text_input("E-MAIL")
+            
+        with c2:
+            st.subheader("📸 Identificação")
+            tipo = st.selectbox("TIPO DE ACESSO", ["Visitante", "Morador", "Prestador", "Veículo"])
+            # Captura da foto via componente de câmera
+            foto_b64 = capturar_face("cam_cadastro", label_botao="Capturar Imagem")
 
-        st.markdown("---")
-        # Chamada da função de câmera (usando o nome atualizado)
-        foto_b64 = capturar_face("cadastro_geral")
-        
-        # O BOTÃO DE ENVIO (Resolve o erro do Streamlit)
-        btn_enviar = st.form_submit_button("REGISTRAR NO SISTEMA ARGOS")
-
-        if btn_enviar:
-            if nome and doc and email:
-                doc_formatado = Utils.formatar_cpf(doc)
+        # Botão de ação
+        if st.form_submit_button("🚀 FINALIZAR REGISTRO", use_container_width=True):
+            if nome and documento:
+                id_limpo = documento.replace(".", "").replace("-", "").strip()
                 
-                # Verifica duplicidade antes de salvar
-                duplicidade = db_handler.is_duplicate(nome, doc_formatado, email)
+                # Executa o salvamento da foto e do CSV
+                caminho_foto = salvar_foto(id_limpo, foto_dir, foto_b64)
                 
-                if duplicidade:
-                    st.error(f"ERRO: Cadastro duplicado detectado no campo: {duplicidade}")
-                else:
-                    # Salva a foto fisicamente
-                    caminho_foto = salvar_foto(None, doc_formatado, foto_dir, foto_b64)
-                    
-                    novo_usuario = {
-                        'Nome': nome,
-                        'Documento': doc_formatado,
-                        'Email': email,
-                        'Telefone': "N/A",
-                        'Tipo': tipo,
-                        'Sexo': sexo,
-                        'Endereco': endereco,
-                        'Origem': "CNAK Vision",
-                        'Data_Cad': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                        'Foto': caminho_foto
-                    }
-                    
-                    db_handler.save_user(novo_usuario)
-                    st.success(f"Cadastro de {nome} realizado com sucesso!")
-                    st.rerun()
+                # Payload para o Banco de Dados
+                dados = [nome.upper(), documento, email, tipo, caminho_foto]
+                db_handler.adicionar_registro(dados)
+                
+                st.success(f"✅ Protocolo de {nome} arquivado com sucesso!")
             else:
-                st.warning("Por favor, preencha todos os campos obrigatórios (*).")
+                st.warning("⚠️ Preencha Nome e Documento para continuar.")
 
-    # Galeria de Perfis (Opcional, se quiser ver os registros abaixo do form)
-    st.markdown("---")
-    st.markdown("### 👥 Galeria de Registros")
-    df = db_handler.get_all_users()
-    if not df.empty:
-        st.dataframe(df, use_container_width=True)
+    # Área de Auditoria Rápida
+    st.divider()
+    with st.expander("🔍 Visualizar Últimos Registros"):
+        df = db_handler.ler_todos()
+        if not df.empty:
+            st.dataframe(df.tail(10), use_container_width=True, hide_index=True)
